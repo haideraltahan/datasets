@@ -379,7 +379,13 @@ class DatasetBuilder(object):
 
     if shuffle_files is None:
       # Shuffle files if training
-      shuffle_files = split == splits_lib.Split.TRAIN
+      if split == splits_lib.Split.TRAIN:
+        tf.logging.warning(
+            "Warning: Setting shuffle_files=True because split=TRAIN and "
+            "shuffle_files=None. This behavior will be deprecated on 07-22-19, "
+            "at which point shuffle_files=False will be the default for all "
+            "splits.")
+        shuffle_files = True
 
     wants_full_dataset = batch_size == -1
     if wants_full_dataset:
