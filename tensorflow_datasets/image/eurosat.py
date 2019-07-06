@@ -73,6 +73,7 @@ class EurosatConfig(tfds.core.BuilderConfig):
       raise ValueError('selection must be one of %s' % _DATA_OPTIONS)
 
     kwargs['supported_versions'] = [
+        tfds.core.Version('2.0.0', experiments={tfds.core.Experiment.S3: True}),
         tfds.core.Version('1.0.0', experiments={tfds.core.Experiment.S3: True}),
     ]
     super(EurosatConfig, self).__init__(**kwargs)

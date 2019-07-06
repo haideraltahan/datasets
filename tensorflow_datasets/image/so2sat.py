@@ -64,6 +64,7 @@ class So2satConfig(tfds.core.BuilderConfig):
       **kwargs: keyword arguments forwarded to super.
     """
     kwargs['supported_versions'] = [
+        tfds.core.Version('2.0.0', experiments={tfds.core.Experiment.S3: True}),
         tfds.core.Version('1.0.0', experiments={tfds.core.Experiment.S3: True}),
     ]
     if selection not in _DATA_OPTIONS:
